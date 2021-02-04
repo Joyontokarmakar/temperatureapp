@@ -48,7 +48,10 @@
                 console.log(data);
 
                 //image change-----------------------------Not Done
-                document.getElementById('weatherImage').innerHTML = data.weather[0].icon;
+
+                
+                const image = document.getElementById('weatherImage');
+                image.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
 
                 //city name
                 document.getElementById('cityName').innerText = data.name;
