@@ -22,7 +22,7 @@
     <div class="container">
         <form class="col-md-6 m-auto py-5">
             <div class="input-group mb-3">
-                <input id="cityInput" type="text" class="form-control" placeholder="Enter a location for Weather ..." value="">
+                <input id="cityInput" type="text" class="form-control" placeholder="Search Weather by City Name ..." value="">
                 <div class="input-group-append">
                     <button id="submit" type="button" class="btn btn-danger">Search</button>
                 </div>
@@ -45,7 +45,7 @@
             fetch("https://api.openweathermap.org/data/2.5/weather?q="+ cityInput.value +"&appid=0cfd24e518d5128ccfa31c9f48508b17")
             .then(res => res.json())
             .then(data => {
-                
+
                 //image change
                 const image = document.getElementById('weatherImage');
                 image.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
