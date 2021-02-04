@@ -45,8 +45,7 @@
             fetch("https://api.openweathermap.org/data/2.5/weather?q="+ cityInput.value +"&appid=0cfd24e518d5128ccfa31c9f48508b17")
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-
+                
                 //image change
                 const image = document.getElementById('weatherImage');
                 image.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
