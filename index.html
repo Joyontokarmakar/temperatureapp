@@ -22,19 +22,46 @@
     <div class="container">
         <form class="col-md-6 m-auto py-5">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Enter a location for Weather ...">
+                <input id="cityInput" type="text" class="form-control" placeholder="Enter a location for Weather ..." value="">
                 <div class="input-group-append">
-                    <button type="button" class="btn btn-danger">Search</button>
+                    <button id="submit" type="button" class="btn btn-danger">Search</button>
                 </div>
             </div>
         </form>
         <div class="weather-status text-white text-center">
-            <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
-            <h1>Dhaka</h1>
-            <h3><span>38.06</span>&deg;C</h3>
-            <h1 class="lead">Clouds</h1>
+            <img id="weatherImage" src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
+            <div class="weather_icon">
+                
+            </div>
+            <h1 id="cityName">Dhaka</h1>
+            <h3><span id="temp">20</span>&deg;C</h3>
+            <h1 class="lead" id="condition">Clear</h1>
         </div>
     </div>
+
+    <script>
+
+        document.getElementById('submit').addEventListener("click", function(){
+            fetch("https://api.openweathermap.org/data/2.5/weather?q="+ cityInput.value +"&appid=0cfd24e518d5128ccfa31c9f48508b17")
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+                //image change
+                document.getElementById('weatherImage').innerHTML = data.weather[0].icon;
+
+                //city name
+                document.getElementById('cityName').innerText = data.name;
+
+                //temperature
+                document.getElementById('temp').innerText = parseFloat(data.main.temp-273.15).toFixed(2);
+
+                //Temperature Condition
+                document.getElementById('condition').innerText = data.weather[0].main;
+            })
+            .catch(err => alert("Wrong Input!!!"));
+        })
+    </script>
 
 </body>
 
