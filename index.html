@@ -47,9 +47,7 @@
             .then(data => {
                 console.log(data);
 
-                //image change-----------------------------Not Done
-
-                
+                //image change
                 const image = document.getElementById('weatherImage');
                 image.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
 
